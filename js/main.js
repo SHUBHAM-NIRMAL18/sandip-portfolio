@@ -55,8 +55,7 @@ function initPreloader() {
 function initThemeToggle() {
   const toggleBtn = document.querySelector('.theme-toggle');
   const root = document.documentElement;
-  const savedTheme = localStorage.getItem('theme') || 
-    (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  const savedTheme = localStorage.getItem('theme') || 'light';
 
   root.setAttribute('data-theme', savedTheme);
   updateThemeIcon(toggleBtn, savedTheme);
