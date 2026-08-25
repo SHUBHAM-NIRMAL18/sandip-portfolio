@@ -93,6 +93,26 @@
   font-weight: 600;
 }
 
+/* Hero Matte Math Grid Pattern */
+.hero-math-grid {
+  position: absolute;
+  inset: 0;
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 210, 180, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 210, 180, 0.05) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 25%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 25%, transparent 85%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-theme="light"] .hero-math-grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 168, 145, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 168, 145, 0.06) 1px, transparent 1px);
+}
+
 /* Hero Background Glow */
 .hero-bg-glow {
   position: absolute;
