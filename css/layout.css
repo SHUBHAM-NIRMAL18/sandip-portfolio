@@ -93,24 +93,31 @@
   font-weight: 600;
 }
 
-/* Hero Matte Math Grid Pattern */
+/* Hero Matte Data Matrix & Coordinate Mesh Background (Faint & Subtle) */
 .hero-math-grid {
   position: absolute;
   inset: 0;
-  background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(0, 210, 180, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 210, 180, 0.05) 1px, transparent 1px);
-  mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 25%, transparent 85%);
-  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 25%, transparent 85%);
+    radial-gradient(circle at 1px 1px, rgba(0, 210, 180, 0.12) 1.2px, transparent 0),
+    radial-gradient(circle at 20px 20px, rgba(56, 189, 248, 0.08) 1.2px, transparent 0),
+    linear-gradient(to right, rgba(0, 210, 180, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 210, 180, 0.035) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px, 80px 80px, 80px 80px;
+  background-position: 0 0, 20px 20px, 0 0, 0 0;
+  mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, #000 30%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, #000 30%, transparent 90%);
   pointer-events: none;
   z-index: 0;
+  opacity: 0.7;
 }
 
 [data-theme="light"] .hero-math-grid {
   background-image: 
-    linear-gradient(to right, rgba(0, 168, 145, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 168, 145, 0.06) 1px, transparent 1px);
+    radial-gradient(circle at 1px 1px, rgba(0, 168, 145, 0.15) 1.2px, transparent 0),
+    radial-gradient(circle at 20px 20px, rgba(2, 132, 199, 0.1) 1.2px, transparent 0),
+    linear-gradient(to right, rgba(0, 168, 145, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 168, 145, 0.045) 1px, transparent 1px);
+  opacity: 0.65;
 }
 
 /* Hero Background Glow */
@@ -210,8 +217,121 @@
 /* ---- Grids ---- */
 .grid-2 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
 .grid-3 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-.metrics-row { margin-bottom: 2.5rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.metrics-row { margin-bottom: 2.5rem; width: 100%; }
+/* ========================================
+   Distinct Section Backgrounds & Textures
+   ======================================== */
+
+/* 1. Hero Section: Faint Dot-Matrix + Cyan Glow */
+#hero {
+  position: relative;
+  background-color: var(--bg-primary);
+}
+
+/* 2. About Section: Alternating Surface + Subtle Depth */
+#about {
+  position: relative;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(21, 34, 56, 0.45) 50%, var(--bg-primary) 100%);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+[data-theme="light"] #about {
+  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(226, 232, 240, 0.55) 50%, var(--bg-primary) 100%);
+}
+
+/* 3. Projects Section: Analytical Blueprint Matrix + Soft Cyan Spotlight */
+#projects {
+  position: relative;
+  background-color: var(--bg-secondary);
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(56, 189, 248, 0.08) 1px, transparent 0),
+    radial-gradient(circle at 50% 10%, rgba(0, 210, 180, 0.05) 0%, transparent 60%);
+  background-size: 28px 28px, 100% 100%;
+}
+[data-theme="light"] #projects {
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(2, 132, 199, 0.1) 1px, transparent 0),
+    radial-gradient(circle at 50% 10%, rgba(0, 168, 145, 0.05) 0%, transparent 60%);
+}
+
+/* 4. Experience Section: Timeline Path Ambient Illumination */
+#experience {
+  position: relative;
+  background: radial-gradient(ellipse 70% 50% at 20% 50%, rgba(0, 210, 180, 0.04) 0%, transparent 80%), var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+}
+[data-theme="light"] #experience {
+  background: radial-gradient(ellipse 70% 50% at 20% 50%, rgba(0, 168, 145, 0.05) 0%, transparent 80%), var(--bg-primary);
+}
+
+/* 5. Education Section: Slate Contrast with Diagonal Subtle Accent */
+#education {
+  position: relative;
+  background: 
+    linear-gradient(135deg, rgba(99, 102, 241, 0.04) 0%, transparent 60%),
+    linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-surface) 100%);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+[data-theme="light"] #education {
+  background: 
+    linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, transparent 60%),
+    linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+/* 6. Skills Section: Micro-Matrix Cross Pattern */
+#skills {
+  position: relative;
+  background-color: var(--bg-primary);
+  background-image: 
+    linear-gradient(to right, rgba(0, 210, 180, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 210, 180, 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+[data-theme="light"] #skills {
+  background-image: 
+    linear-gradient(to right, rgba(0, 168, 145, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 168, 145, 0.06) 1px, transparent 1px);
+}
+
+/* 7. Certifications & Honors: Warm Amber Illumination */
+#certifications {
+  position: relative;
+  background: 
+    radial-gradient(circle at 85% 25%, rgba(245, 158, 11, 0.06) 0%, transparent 65%),
+    var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+[data-theme="light"] #certifications {
+  background: 
+    radial-gradient(circle at 85% 25%, rgba(245, 158, 11, 0.08) 0%, transparent 65%),
+    #ffffff;
+}
+
+/* 8. Endorsements: Subtle Spotlight Depth */
+#endorsements {
+  position: relative;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(56, 189, 248, 0.05) 0%, transparent 80%), var(--bg-primary);
+}
+[data-theme="light"] #endorsements {
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(2, 132, 199, 0.06) 0%, transparent 80%), #f8fafc;
+}
+
+/* 9. Contact: Focused Ambient Spotlight Behind Form */
+#contact {
+  position: relative;
+  background: 
+    radial-gradient(circle at 50% 60%, rgba(0, 210, 180, 0.07) 0%, transparent 65%),
+    var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+}
+[data-theme="light"] #contact {
+  background: 
+    radial-gradient(circle at 50% 60%, rgba(0, 168, 145, 0.07) 0%, transparent 65%),
+    #ffffff;
+}
 
 /* ---- Footer ---- */
 .site-footer {
@@ -234,6 +354,7 @@
   .hero-grid { grid-template-columns: 1.15fr 0.85fr; }
   .grid-2 { grid-template-columns: repeat(2, 1fr); }
   .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
   .section-container { padding: 4rem 1.5rem; }
 }
 
