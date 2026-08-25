@@ -9,31 +9,38 @@ export function initNavigation() {
   const navToggle = document.querySelector('.nav-toggle');
   const navMenu = document.querySelector('.nav-links');
 
-  // Strip any existing hash immediately
-  if (window.location.hash) {
+  // Strip #hero hash immediately if present on page load
+  if (window.location.hash === '#hero') {
     history.replaceState(null, '', window.location.pathname);
   }
 
   function updateActiveLink(targetId) {
     document.querySelectorAll('.nav-link').forEach(link => {
       const href = link.getAttribute('href');
-      const isMatch = href === `#${targetId}` || (targetId === 'hero' && href === '#hero');
+      const isMatch = href === `#${targetId}` || (targetId === 'hero' && href === '#hero') || (!targetId && href === '#about');
       link.classList.toggle('active', isMatch);
       link.setAttribute('aria-current', isMatch ? 'page' : 'false');
     });
   }
 
-  // Smooth scroll without altering the URL with hashtags
+  // Smooth scroll handler
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
-      if (href && href.startsWith('#')) {
+      if (href && (href.startsWith('#') || href === '#')) {
         e.preventDefault();
-        const targetId = href.substring(1);
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-          targetSection.scrollIntoView({ behavior: 'smooth' });
-          updateActiveLink(targetId);
+        const targetId = href.replace('#', '');
+        if (!targetId || targetId === 'hero') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          history.replaceState(null, '', window.location.pathname);
+          updateActiveLink('hero');
+        } else {
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+            history.replaceState(null, '', `#${targetId}`);
+            updateActiveLink(targetId);
+          }
         }
         if (navMenu && navMenu.classList.contains('open')) {
           navMenu.classList.remove('open');
@@ -43,13 +50,18 @@ export function initNavigation() {
     });
   });
 
-  // ScrollSpy observer (highlights active link without changing URL)
+  // ScrollSpy observer: keeps URL clean at top (no #hero), updates for other sections
   const observerOptions = { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 };
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute('id');
         updateActiveLink(id);
+        if (id === 'hero') {
+          history.replaceState(null, '', window.location.pathname);
+        } else {
+          history.replaceState(null, '', `#${id}`);
+        }
       }
     });
   }, observerOptions);
