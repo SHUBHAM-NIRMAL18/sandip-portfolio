@@ -1,0 +1,245 @@
+/* ==========================================================================
+   Layout: Grid, Flex Containers, Header, Hero, Section Shells & Responsive
+   ========================================================================== */
+
+/* ---- Header & Nav ---- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  z-index: 1000;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+}
+
+.nav-container {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.site-main {
+  padding-top: 72px;
+  width: 100%;
+}
+
+/* ---- Containers ---- */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem;
+}
+
+/* ---- Hero Layout ---- */
+.hero-section {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 7rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.hero-desc {
+  margin: 1rem 0 0;
+  max-width: 560px;
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.hero-desc strong {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* Hero Background Glow */
+.hero-bg-glow {
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 210, 180, 0.1) 0%, transparent 70%);
+  top: -15%;
+  right: -10%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-bg-glow--secondary {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+  top: auto;
+  bottom: -10%;
+  left: -5%;
+  right: auto;
+}
+
+/* Hero Stats Row */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(10px);
+}
+
+.hero-stat {
+  text-align: center;
+  flex: 1;
+  min-width: 60px;
+}
+
+.hero-stat-val {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  color: var(--accent-teal);
+  line-height: 1.2;
+}
+
+.hero-stat-label {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-mono);
+}
+
+.hero-stat-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border-subtle);
+  flex-shrink: 0;
+}
+
+/* ---- Section Headers ---- */
+.section-header {
+  text-align: center;
+  margin-bottom: 2.25rem;
+}
+
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.825rem;
+  color: var(--accent-teal);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  max-width: 620px;
+  margin: 0.75rem auto 0;
+  font-size: 0.975rem;
+}
+
+/* ---- Grids ---- */
+.grid-2 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+.grid-3 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+.metrics-row { margin-bottom: 2.5rem; }
+
+/* ---- Footer ---- */
+.site-footer {
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+  padding: 3rem 1.25rem;
+  text-align: center;
+}
+
+.footer-title { font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; }
+.footer-sub { color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1rem; }
+.footer-copy { color: var(--text-dim); font-size: 0.8rem; }
+
+/* ========================================
+   Responsive Breakpoints
+   ======================================== */
+
+/* Tablet+ */
+@media (min-width: 768px) {
+  .hero-grid { grid-template-columns: 1.15fr 0.85fr; }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .section-container { padding: 4rem 1.5rem; }
+}
+
+/* Mid mobile — stats shrink */
+@media (max-width: 767px) {
+  .hero-grid { gap: 2.5rem; }
+  .hero-stats {
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+  }
+  .hero-stat-val { font-size: 1.1rem; }
+  .hero-stat-label { font-size: 0.55rem; }
+  .hero-stat-divider { height: 24px; }
+}
+
+/* Small phones — stats tighter, buttons stack */
+@media (max-width: 480px) {
+  .hero-stats {
+    gap: 0.4rem;
+    padding: 0.65rem 0.5rem;
+  }
+  .hero-stat-val { font-size: 1rem; }
+  .hero-stat-label { font-size: 0.5rem; letter-spacing: 0; }
+  .hero-stat-divider { height: 20px; }
+  .hero-actions {
+    flex-direction: column;
+  }
+  .section-container { padding: 2.5rem 1rem; }
+}

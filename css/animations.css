@@ -1,0 +1,87 @@
+/* ==========================================================================
+   Animations: Orbit Spin, Ring Rotate, Badge Pulse, Preloader, Reveals
+   ========================================================================== */
+
+/* ---- Orbit Animation ---- */
+@keyframes orbitSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes orbitCounterSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+/* ---- Avatar Ring Gradient Rotation ---- */
+@keyframes ringRotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ---- Badge Pulse ---- */
+@keyframes badgePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+  70%  { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* ---- Glow Pulse on Metric Cards ---- */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(0, 210, 180, 0.15); }
+  50%      { box-shadow: 0 0 30px rgba(0, 210, 180, 0.35); }
+}
+
+.pulse-card { animation: pulseGlow 4s ease-in-out infinite; }
+
+/* ---- Preloader Keyframes ---- */
+@keyframes preloaderSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes preloaderPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+@keyframes preloaderBar {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 100%; }
+}
+
+/* ---- Scroll-Triggered Reveals ---- */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-init.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Reduced Motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .orbit-track,
+  .orbit-tag,
+  .hero-avatar-ring,
+  .pulse-card,
+  .badge-pulse,
+  .preloader-spinner {
+    animation: none !important;
+  }
+
+  .hero-avatar-ring {
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .reveal-init {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
